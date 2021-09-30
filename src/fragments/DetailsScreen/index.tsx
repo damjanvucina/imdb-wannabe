@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import {NavigationFunctionComponent} from 'react-native-navigation';
 
-export const DetailsScreen: React.FC = React.memo(() => {
+export const DetailsScreen: NavigationFunctionComponent = React.memo(() => {
   return (
     <View>
       <Text>details screen</Text>

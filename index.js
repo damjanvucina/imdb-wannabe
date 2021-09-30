@@ -10,11 +10,31 @@ Navigation.registerComponent('FavoritesScreen', () => FavoritesScreen);
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
-      stack: {
+      bottomTabs: {
         children: [
           {
-            component: {
-              name: 'HomeScreen',
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'HomeScreen',
+                  },
+                },
+              ],
+              options: {
+                bottomTab: {},
+              },
+            },
+          },
+          {
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'FavoritesScreen',
+                  },
+                },
+              ],
             },
           },
         ],
@@ -22,3 +42,25 @@ Navigation.events().registerAppLaunchedListener(() => {
     },
   });
 });
+
+HomeScreen.options = {
+  topBar: {
+    title: {
+      text: 'Home',
+    },
+  },
+  bottomTab: {
+    text: 'Home',
+  },
+};
+
+FavoritesScreen.options = {
+  topBar: {
+    title: {
+      text: 'Favorites',
+    },
+  },
+  bottomTab: {
+    text: 'Favorites',
+  },
+};

@@ -2,6 +2,14 @@ import {Navigation} from 'react-native-navigation';
 import {HomeScreen} from './src/fragments/HomeScreen';
 import {DetailsScreen} from './src/fragments/DetailsScreen';
 import {FavoritesScreen} from './src/fragments/FavoritesScreen';
+import {
+  HomeTabActive,
+  HomeTabInactive,
+  FavoritesTabInactive,
+  FavoritesTabActive,
+} from './src/assets';
+import {colors} from './src/theme';
+
 Navigation.registerComponent('HomeScreen', () => HomeScreen);
 Navigation.registerComponent('DetailsScreen', () => DetailsScreen);
 Navigation.registerComponent('FavoritesScreen', () => FavoritesScreen);
@@ -21,7 +29,12 @@ Navigation.events().registerAppLaunchedListener(() => {
                 },
               ],
               options: {
-                bottomTab: {},
+                // react-native-navigation does not support svgs as tab bar icons (https://github.com/wix/react-native-navigation/issues/5402)
+                bottomTab: {
+                  icon: HomeTabInactive,
+                  selectedIcon: HomeTabActive,
+                  textColor: colors.notSelected,
+                },
               },
             },
           },
@@ -34,6 +47,13 @@ Navigation.events().registerAppLaunchedListener(() => {
                   },
                 },
               ],
+              options: {
+                bottomTab: {
+                  icon: FavoritesTabInactive,
+                  selectedIcon: FavoritesTabActive,
+                  textColor: colors.notSelected,
+                },
+              },
             },
           },
         ],

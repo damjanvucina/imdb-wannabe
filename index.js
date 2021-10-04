@@ -1,7 +1,6 @@
 import {Navigation} from 'react-native-navigation';
-import {HomeScreen} from './src/fragments/HomeScreen';
-import {DetailsScreen} from './src/fragments/DetailsScreen';
-import {FavoritesScreen} from './src/fragments/FavoritesScreen';
+import {HomeScreen, DetailsScreen, FavoritesScreen} from './src/fragments';
+import {Header} from './src/components';
 import {
   HomeTabActive,
   HomeTabInactive,
@@ -13,6 +12,15 @@ import {colors} from './src/theme';
 Navigation.registerComponent('HomeScreen', () => HomeScreen);
 Navigation.registerComponent('DetailsScreen', () => DetailsScreen);
 Navigation.registerComponent('FavoritesScreen', () => FavoritesScreen);
+Navigation.registerComponent('Header', () => Header);
+
+Navigation.setDefaultOptions({
+  topBar: {
+    background: {
+      color: colors.primary,
+    },
+  },
+});
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
@@ -66,6 +74,9 @@ HomeScreen.options = {
   topBar: {
     title: {
       text: 'Home',
+      component: {
+        name: 'Header',
+      },
     },
   },
   bottomTab: {
@@ -77,6 +88,9 @@ FavoritesScreen.options = {
   topBar: {
     title: {
       text: 'Favorites',
+      component: {
+        name: 'Header',
+      },
     },
   },
   bottomTab: {

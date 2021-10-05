@@ -1,13 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
-// import FavoritesIcon from '../../assets/images/favorites-tab-active.svg';
+import {SearchBar} from '../../components/SearchBar';
 
 export const HomeScreen: NavigationFunctionComponent = React.memo(() => {
   return (
-    <View>
-      <Text>home screen</Text>
-      {/*<FavoritesIcon />*/}
-    </View>
+    <SafeAreaView>
+      <SearchBar />
+    </SafeAreaView>
   );
 });

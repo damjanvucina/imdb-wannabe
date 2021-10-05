@@ -25,6 +25,15 @@ const StyledViewContainer = styled.View`
   flex-direction: row;
 `;
 
+const StyledCancelButtonPrimary = styled.Button`
+  color: ${colors.primary};
+  background-color: darkblue;
+`;
+const StyledCancelButtonContainer = styled.View`
+  margin-top: 12px;
+  padding-right: 10px;
+`;
+
 export const SearchBar: React.FC = React.memo(() => {
   return (
     <StyledViewContainer>
@@ -32,6 +41,12 @@ export const SearchBar: React.FC = React.memo(() => {
       <StyledImageContainerPrepended>
         <Search />
       </StyledImageContainerPrepended>
+      <StyledCancelButtonContainer>
+        <StyledCancelButtonPrimary
+          title="Cancel"
+          onPress={() => console.log('aa')}
+        />
+      </StyledCancelButtonContainer>
     </StyledViewContainer>
   );
 });

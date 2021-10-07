@@ -20,3 +20,17 @@ export const popularMoviesSelector = createSelector(
     return allMovies.filter(movie => popularMoviesIds.includes(movie.id));
   },
 );
+
+export const topRatedMoviesSelector = createSelector(
+  [allMoviesSelector, topRatedMoviesIdsSelector],
+  (allMovies, topRatedMoviesIds) => {
+    return allMovies.filter(movie => topRatedMoviesIds.includes(movie.id));
+  },
+);
+
+export const upcomingMoviesSelector = createSelector(
+  [allMoviesSelector, upcomingMoviesIdsSelector],
+  (allMovies, upcomingMoviesIds) => {
+    return allMovies.filter(movie => upcomingMoviesIds.includes(movie.id));
+  },
+);

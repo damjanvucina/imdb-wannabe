@@ -6,10 +6,16 @@ interface Movie {
 
 interface InitialState {
   movies: Movie[];
+  popularMoviesIds: number[];
+  topRatedMoviesIds: number[];
+  upcomingMoviesIds: number[];
 }
 
 const initialState: InitialState = {
   movies: [],
+  popularMoviesIds: [],
+  topRatedMoviesIds: [],
+  upcomingMoviesIds: [],
 };
 
 const moviesSlice = createSlice({
@@ -18,6 +24,15 @@ const moviesSlice = createSlice({
   reducers: {
     setMovies: (draft, action) => {
       draft.movies = action.payload;
+    },
+    setPopularMoviesIds: (draft, action) => {
+      draft.popularMoviesIds = action.payload;
+    },
+    setTopRatedMoviesIds: (draft, action) => {
+      draft.topRatedMoviesIds = action.payload;
+    },
+    setUpcomingMoviesIds: (draft, action) => {
+      draft.upcomingMoviesIds = action.payload;
     },
   },
 });
@@ -29,5 +44,11 @@ export const store = configureStore({
   devTools: true,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export const {
+  setMovies,
+  setPopularMoviesIds,
+  setTopRatedMoviesIds,
+  setUpcomingMoviesIds,
+} = moviesSlice.actions;
+
 export type AppDispatch = typeof store.dispatch;

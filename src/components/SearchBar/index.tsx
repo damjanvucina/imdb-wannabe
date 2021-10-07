@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {TextInput} from 'react-native';
 import styled from 'styled-components/native';
 import {Search} from '../../assets';
 import {colors} from '../../theme';
+import {useDispatch} from 'react-redux';
+import {fetchMoviesThunk} from '../../redux';
 
 const StyledTextInputPrimary = styled(TextInput)`
   background-color: ${colors.inputBackground};
@@ -35,6 +37,12 @@ const StyledCancelButtonContainer = styled.View`
 `;
 
 export const SearchBar: React.FC = React.memo(() => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMoviesThunk());
+  }, [dispatch]);
+
   return (
     <StyledViewContainer>
       <StyledTextInputPrimary onChangeText={() => {}} placeholder="Search" />

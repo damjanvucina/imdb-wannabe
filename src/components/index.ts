@@ -1,4 +1,4 @@
 export * from './Header';
 export * from './SearchBar';
-export * from './MoviesCategories';
-export * from './MovieCategory';
+export * from './CategoriesPreview';
+export * from './CategoriesPreview';

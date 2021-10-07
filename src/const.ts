@@ -5,4 +5,5 @@ export enum ActionTypes {
 export type Movie = {
   name: string;
   id: number;
+  backdrop_path: string;
 };

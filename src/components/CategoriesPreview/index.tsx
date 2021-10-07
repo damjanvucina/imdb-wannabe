@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {MovieCategory} from '../MovieCategory';
 import {popularMoviesSelector} from '../../redux';
 
-export const MoviesCategories: React.FC = React.memo(() => {
+export const CategoriesPreview: React.FC = React.memo(() => {
   const popularMovies = useSelector(popularMoviesSelector);
 
   return (

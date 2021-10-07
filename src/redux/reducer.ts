@@ -9,6 +9,7 @@ interface InitialState {
   popularMoviesIds: number[];
   topRatedMoviesIds: number[];
   upcomingMoviesIds: number[];
+  favoriteMoviesIds: number[];
 }
 
 const initialState: InitialState = {
@@ -16,6 +17,7 @@ const initialState: InitialState = {
   popularMoviesIds: [],
   topRatedMoviesIds: [],
   upcomingMoviesIds: [],
+  favoriteMoviesIds: [],
 };
 
 const moviesSlice = createSlice({

@@ -6,7 +6,6 @@ import {Movie} from '../../const';
 import styled from 'styled-components';
 
 const StyledImage = styled(Image)`
-  width: 122px;
   width: ${props => (props.width ? `${props.width}px` : '122px')};
   height: 179px;
   border-radius: 10px;

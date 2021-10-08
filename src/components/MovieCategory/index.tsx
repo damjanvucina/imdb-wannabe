@@ -21,6 +21,10 @@ const MovieCardSeparator = styled(View)`
   height: 8px;
 `;
 
+const StyledMovieCardContainer = styled(View)`
+  margin-right: 10px;
+`;
+
 type Props = {
   title: string;
   movies: Movie[];
@@ -36,7 +40,16 @@ export const MovieCategory: React.FC<Props> = React.memo(
         <StyledTitle>{title}</StyledTitle>
         <FlatList
           data={movies}
-          renderItem={({item: movie}) => <MovieCard movie={movie} />}
+          renderItem={({item: movie}) => {
+            if (!numColumns) {
+              return <MovieCard movie={movie} />;
+            }
+            return (
+              <StyledMovieCardContainer>
+                <MovieCard movie={movie} width={112} />
+              </StyledMovieCardContainer>
+            );
+          }}
           ItemSeparatorComponent={MovieCardSeparator}
           keyExtractor={movie => `${movie.id}`}
           horizontal={isHorizontal}

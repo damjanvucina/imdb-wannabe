@@ -26,6 +26,9 @@ const moviesSlice = createSlice({
     },
     setPopularMoviesIds: (draft, action) => {
       draft.popularMoviesIds = action.payload;
+      // TODO REMOVE
+      // draft.favoriteMoviesIds = action.payload.slice(0, 5);
+      draft.favoriteMoviesIds = action.payload;
     },
     setTopRatedMoviesIds: (draft, action) => {
       draft.topRatedMoviesIds = action.payload;

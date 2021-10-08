@@ -15,9 +15,13 @@ export const CategoriesPreview: React.FC = React.memo(() => {
 
   return (
     <ScrollView>
-      <MovieCategory title="What's popular" movies={popularMovies} />
-      <MovieCategory title="Top Rated" movies={topRatedMovies} />
-      <MovieCategory title="Upcoming" movies={upcomingMovies} />
+      <MovieCategory
+        title="What's popular"
+        movies={popularMovies}
+        isHorizontal
+      />
+      <MovieCategory title="Top Rated" movies={topRatedMovies} isHorizontal />
+      <MovieCategory title="Upcoming" movies={upcomingMovies} isHorizontal />
     </ScrollView>
   );
 });

@@ -18,28 +18,38 @@ const CategoryContainer = styled(View)`
 
 const MovieCardSeparator = styled(View)`
   width: 8px;
+  height: 8px;
 `;
 
 type Props = {
   title: string;
   movies: Movie[];
+  isHorizontal?: boolean;
+  numColumns?: number;
+  key?: number;
 };
 
-export const MovieCategory: React.FC<Props> = React.memo(({title, movies}) => {
-  return (
-    <CategoryContainer>
-      <StyledTitle>{title}</StyledTitle>
-      <FlatList
-        data={movies}
-        renderItem={({item: movie}) => <MovieCard movie={movie} />}
-        ItemSeparatorComponent={MovieCardSeparator}
-        keyExtractor={movie => `${movie.id}`}
-        horizontal
-        contentContainerStyle={styles.flatListContentContainer}
-      />
-    </CategoryContainer>
-  );
-});
+export const MovieCategory: React.FC<Props> = React.memo(
+  ({title, movies, isHorizontal, numColumns, key}) => {
+    return (
+      <CategoryContainer>
+        <StyledTitle>{title}</StyledTitle>
+        <FlatList
+          data={movies}
+          renderItem={({item: movie}) => <MovieCard movie={movie} />}
+          ItemSeparatorComponent={MovieCardSeparator}
+          keyExtractor={movie => `${movie.id}`}
+          horizontal={isHorizontal}
+          contentContainerStyle={styles.flatListContentContainer}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          numColumns={numColumns}
+          key={key}
+        />
+      </CategoryContainer>
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   flatListContentContainer: {

@@ -14,6 +14,9 @@ export const topRatedMoviesIdsSelector = (state: RootState): number[] =>
 export const upcomingMoviesIdsSelector = (state: RootState): number[] =>
   state.movies.upcomingMoviesIds;
 
+export const favoriteMoviesIdsSelector = (state: RootState): number[] =>
+  state.movies.favoriteMoviesIds;
+
 export const popularMoviesSelector = createSelector(
   [allMoviesSelector, popularMoviesIdsSelector],
   (allMovies, popularMoviesIds) => {
@@ -32,5 +35,12 @@ export const upcomingMoviesSelector = createSelector(
   [allMoviesSelector, upcomingMoviesIdsSelector],
   (allMovies, upcomingMoviesIds) => {
     return allMovies.filter(movie => upcomingMoviesIds.includes(movie.id));
+  },
+);
+
+export const favoriteMoviesSelector = createSelector(
+  [allMoviesSelector, favoriteMoviesIdsSelector],
+  (allMovies, favoriteMoviesIds) => {
+    return allMovies.filter(movie => favoriteMoviesIds.includes(movie.id));
   },
 );

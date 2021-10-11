@@ -1,9 +1,13 @@
-import React from 'react';
-import {Image, View} from 'react-native';
-import {TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import {Image, View, TouchableOpacity} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 import {getMovieUri} from '../../services';
 import {NotFavorite, Favorite} from '../../assets';
-import {Movie} from '../../const';
+import {
+  Movie,
+  NavigationScreenNames,
+  NavigationStackIdContext,
+} from '../../const';
 import styled from 'styled-components';
 import {colors} from '../../theme';
 
@@ -31,8 +35,21 @@ type Props = {
 
 export const MovieCard: React.FC<Props> = React.memo(
   ({movie, width, isFavorite}) => {
+    const currentNavigationStackId = useContext(NavigationStackIdContext);
+
+    const navigateToMovieDetails = () => {
+      Navigation.push(currentNavigationStackId, {
+        component: {
+          name: NavigationScreenNames.DetailsScreen,
+          passProps: {
+            movie,
+          },
+        },
+      });
+    };
+
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={navigateToMovieDetails}>
         <FavoritedContainer>
           {!isFavorite ? <NotFavorite /> : <Favorite />}
         </FavoritedContainer>

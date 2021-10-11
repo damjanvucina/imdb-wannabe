@@ -1,5 +1,6 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 import {Movie} from '../const';
+import {transformMovies} from '../services';
 
 interface InitialState {
   allMovies: Movie[];
@@ -22,12 +23,10 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setMovies: (draft, action) => {
-      draft.allMovies = action.payload;
+      draft.allMovies = transformMovies(action.payload);
     },
     setPopularMoviesIds: (draft, action) => {
       draft.popularMoviesIds = action.payload;
-      // TODO REMOVE
-      // draft.favoriteMoviesIds = action.payload.slice(0, 5);
       draft.favoriteMoviesIds = action.payload;
     },
     setTopRatedMoviesIds: (draft, action) => {

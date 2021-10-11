@@ -1,6 +1,7 @@
 import {Navigation} from 'react-native-navigation';
 import {HomeScreen, DetailsScreen, FavoritesScreen} from './src/fragments';
 import {Header} from './src/components';
+import {NavigationScreenNames} from './src/const';
 import {
   HomeTabActive,
   HomeTabInactive,
@@ -9,9 +10,18 @@ import {
 } from './src/assets';
 import {colors} from './src/theme';
 
-Navigation.registerComponent('HomeScreen', () => HomeScreen);
-Navigation.registerComponent('DetailsScreen', () => DetailsScreen);
-Navigation.registerComponent('FavoritesScreen', () => FavoritesScreen);
+Navigation.registerComponent(
+  NavigationScreenNames.HomeScreen,
+  () => HomeScreen,
+);
+Navigation.registerComponent(
+  NavigationScreenNames.DetailsScreen,
+  () => DetailsScreen,
+);
+Navigation.registerComponent(
+  NavigationScreenNames.FavoritesScreen,
+  () => FavoritesScreen,
+);
 Navigation.registerComponent('Header', () => Header);
 
 Navigation.setDefaultOptions({

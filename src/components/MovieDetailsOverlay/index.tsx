@@ -8,9 +8,11 @@ import {colors} from '../../theme';
 import {getYearFromDate, minutesToTimeLabel} from '../../services';
 import {
   fetchMovieDetailsThunk,
+  isMovieFavoriteSelector,
   movieGenresLabelSelector,
   movieRuntimeMinutesSelector,
 } from '../../redux';
+import {FavoriteIcon} from '../../fragments/FavoriteIcon';
 
 type Props = {
   movie: Movie;
@@ -28,6 +30,9 @@ const StyledLabel = styled(Text)`
 const StyledRuntimeLabel = styled(Text)`
   font-weight: bold;
 `;
+const FavoriteIconContainer = styled(View)`
+  right: 10px;
+`;
 
 export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
   const dispatch = useDispatch();
@@ -36,6 +41,9 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
   );
   const movieRuntimeMinutes = useSelector(state =>
     movieRuntimeMinutesSelector(state, movie.id),
+  );
+  const isMovieFavorite = useSelector(state =>
+    isMovieFavoriteSelector(state, movie.id),
   );
   const formattedLabel = minutesToTimeLabel(movieRuntimeMinutes);
   console.log(formattedLabel);
@@ -56,6 +64,9 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
           {` ${minutesToTimeLabel(movieRuntimeMinutes)}`}
         </StyledRuntimeLabel>
       </StyledLabel>
+      <FavoriteIconContainer>
+        <FavoriteIcon isFavorite={isMovieFavorite} />
+      </FavoriteIconContainer>
     </View>
   );
 });

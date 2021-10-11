@@ -20,8 +20,13 @@ export const favoriteMoviesIdsSelector = (state: RootState): number[] =>
 export const movieGenresSelector = (state: RootState): MovieGenres =>
   state.movies.movieGenres;
 
-export const movieRuntimeMinutesSelector = (state: RootState, movieId) =>
-  state.movies.movieRuntimeMinutes[movieId];
+export const movieRuntimeMinutesSelector = (
+  state: RootState,
+  movieId: number,
+) => state.movies.movieRuntimeMinutes[movieId];
+
+export const isMovieFavoriteSelector = (state: RootState, movieId: number) =>
+  state.movies.favoriteMoviesIds.includes(movieId);
 
 export const popularMoviesSelector = createSelector(
   [allMoviesSelector, popularMoviesIdsSelector],

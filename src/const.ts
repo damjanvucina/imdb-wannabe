@@ -42,3 +42,4 @@ export const NavigationStackIdContext = createContext('');
 export const DATE_FORMAT = 'DD/MM/YYYY';
 
 export type MovieGenres = {[key: number]: string};
+export type MovieRuntimeMinutes = {[key: number]: number};

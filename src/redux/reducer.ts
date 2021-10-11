@@ -1,5 +1,5 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
-import {Movie, MovieGenres} from '../const';
+import {Movie, MovieGenres, MovieRuntimeMinutes} from '../const';
 import {transformMovies} from '../services';
 
 interface InitialState {
@@ -9,6 +9,7 @@ interface InitialState {
   upcomingMoviesIds: number[];
   favoriteMoviesIds: number[];
   movieGenres: MovieGenres;
+  movieRuntimeMinutes: MovieRuntimeMinutes;
 }
 
 const initialState: InitialState = {
@@ -18,6 +19,7 @@ const initialState: InitialState = {
   upcomingMoviesIds: [],
   favoriteMoviesIds: [],
   movieGenres: {},
+  movieRuntimeMinutes: {},
 };
 
 const moviesSlice = createSlice({
@@ -41,6 +43,10 @@ const moviesSlice = createSlice({
     setMovieGenres: (draft, action) => {
       draft.movieGenres = action.payload;
     },
+    setMovieRuntimeMinutes: (draft, action) => {
+      const {movieId, runtimeMinutes} = action.payload;
+      draft.movieRuntimeMinutes[movieId] = runtimeMinutes;
+    },
   },
 });
 
@@ -57,6 +63,7 @@ export const {
   setTopRatedMoviesIds,
   setUpcomingMoviesIds,
   setMovieGenres,
+  setMovieRuntimeMinutes,
 } = moviesSlice.actions;
 
 export type AppDispatch = typeof store.dispatch;

@@ -14,6 +14,7 @@ import {
   setUpcomingMoviesIds,
   setMovies,
   setMovieGenres,
+  setMovieRuntimeMinutes,
 } from './reducer';
 
 export const fetchMoviesThunk = createAsyncThunk(
@@ -67,10 +68,11 @@ export const fetchMovieGenresThunk = createAsyncThunk(
 export const fetchMovieDetailsThunk = createAsyncThunk(
   ActionTypes.FetchMovieDetailsThunk,
   async (movieId, thunkAPI) => {
-    console.log('pozva');
     const {dispatch} = thunkAPI;
 
     const movieDetailsResponse = await fetchMovieDetails(movieId);
-    const runTimeMinutes = movieDetailsResponse.data.runtime;
+    const runtimeMinutes = movieDetailsResponse.data.runtime;
+    console.log('minute ', runtimeMinutes);
+    dispatch(setMovieRuntimeMinutes({movieId: movieId, runtimeMinutes}));
   },
 );

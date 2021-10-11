@@ -1,6 +1,6 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {RootState} from './reducer';
-import {Movie} from '../const';
+import {Movie, MovieGenres} from '../const';
 
 export const allMoviesSelector = (state: RootState): Movie[] =>
   state.movies.allMovies;
@@ -16,6 +16,9 @@ export const upcomingMoviesIdsSelector = (state: RootState): number[] =>
 
 export const favoriteMoviesIdsSelector = (state: RootState): number[] =>
   state.movies.favoriteMoviesIds;
+
+export const movieGenresSelector = (state: RootState): MovieGenres =>
+  state.movies.movieGenres;
 
 export const popularMoviesSelector = createSelector(
   [allMoviesSelector, popularMoviesIdsSelector],
@@ -44,3 +47,12 @@ export const favoriteMoviesSelector = createSelector(
     return allMovies.filter(movie => favoriteMoviesIds.includes(movie.id));
   },
 );
+
+export const movieGenresLabelSelector = (
+  state: RootState,
+  genreIds: number[],
+) => {
+  const movieGenres = movieGenresSelector(state);
+
+  return genreIds.map(genreId => movieGenres[genreId]).join(', ');
+};

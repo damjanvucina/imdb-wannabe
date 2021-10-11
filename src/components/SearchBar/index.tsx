@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import {Search} from '../../assets';
 import {colors} from '../../theme';
 import {useDispatch} from 'react-redux';
-import {fetchMoviesThunk} from '../../redux';
+import {fetchMoviesThunk, fetchMovieGenresThunk} from '../../redux';
 
 const StyledTextInputPrimary = styled(TextInput)`
   background-color: ${colors.inputBackground};
@@ -41,6 +41,7 @@ export const SearchBar: React.FC = React.memo(() => {
 
   useEffect(() => {
     dispatch(fetchMoviesThunk());
+    dispatch(fetchMovieGenresThunk());
   }, [dispatch]);
 
   return (

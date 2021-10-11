@@ -5,16 +5,19 @@ import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
+  fetchMovieGenres,
+  fetchMovieDetails,
 } from '../api';
 import {
   setPopularMoviesIds,
   setTopRatedMoviesIds,
   setUpcomingMoviesIds,
   setMovies,
+  setMovieGenres,
 } from './reducer';
 
 export const fetchMoviesThunk = createAsyncThunk(
-  ActionTypes.FetchPopularMoviesThunk,
+  ActionTypes.FetchMoviesThunk,
   async (_, thunkAPI) => {
     const {dispatch} = thunkAPI;
 
@@ -42,5 +45,32 @@ export const fetchMoviesThunk = createAsyncThunk(
     dispatch(setTopRatedMoviesIds(topRatedMoviesIds));
     dispatch(setUpcomingMoviesIds(upcomingMoviesIds));
     dispatch(setMovies(allUniqueMovies));
+  },
+);
+
+export const fetchMovieGenresThunk = createAsyncThunk(
+  ActionTypes.FetchMovieGenresThunk,
+  async (_, thunkAPI) => {
+    const {dispatch} = thunkAPI;
+
+    const movieGenresResponse = await fetchMovieGenres();
+    const movieGenres = movieGenresResponse.data.genres;
+    const movieGenresReduced = movieGenres.reduce((acc: any, curr: any) => {
+      acc[curr.id] = curr.name;
+      return acc;
+    }, {});
+
+    dispatch(setMovieGenres(movieGenresReduced));
+  },
+);
+
+export const fetchMovieDetailsThunk = createAsyncThunk(
+  ActionTypes.FetchMovieDetailsThunk,
+  async (movieId, thunkAPI) => {
+    console.log('pozva');
+    const {dispatch} = thunkAPI;
+
+    const movieDetailsResponse = await fetchMovieDetails(movieId);
+    const runTimeMinutes = movieDetailsResponse.data.runtime;
   },
 );

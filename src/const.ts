@@ -1,13 +1,17 @@
 import {createContext} from 'react';
 
 export enum ActionTypes {
-  FetchPopularMoviesThunk = 'FETCH_POPULAR_MOVIES_THUNK',
+  FetchMoviesThunk = 'FETCH_MOVIES_THUNK',
+  FetchMovieGenresThunk = 'FETCH_MOVIE_GENRES_THUNK',
+  FetchMovieDetailsThunk = 'FETCH_MOVIE_DETAILS_THUNK',
 }
 
 export type Movie = {
   name: string;
   id: number;
   posterUrl: string;
+  releaseDate: string;
+  genreIds: number[];
 };
 
 export type MovieApiObject = {
@@ -34,3 +38,7 @@ export enum NavigationScreenNames {
 }
 
 export const NavigationStackIdContext = createContext('');
+
+export const DATE_FORMAT = 'DD/MM/YYYY';
+
+export type MovieGenres = {[key: number]: string};

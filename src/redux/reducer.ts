@@ -1,5 +1,5 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
-import {Movie} from '../const';
+import {Movie, MovieGenres} from '../const';
 import {transformMovies} from '../services';
 
 interface InitialState {
@@ -8,6 +8,7 @@ interface InitialState {
   topRatedMoviesIds: number[];
   upcomingMoviesIds: number[];
   favoriteMoviesIds: number[];
+  movieGenres: MovieGenres;
 }
 
 const initialState: InitialState = {
@@ -16,6 +17,7 @@ const initialState: InitialState = {
   topRatedMoviesIds: [],
   upcomingMoviesIds: [],
   favoriteMoviesIds: [],
+  movieGenres: {},
 };
 
 const moviesSlice = createSlice({
@@ -23,6 +25,7 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setMovies: (draft, action) => {
+      console.log(action.payload[0]);
       draft.allMovies = transformMovies(action.payload);
     },
     setPopularMoviesIds: (draft, action) => {
@@ -34,6 +37,9 @@ const moviesSlice = createSlice({
     },
     setUpcomingMoviesIds: (draft, action) => {
       draft.upcomingMoviesIds = action.payload;
+    },
+    setMovieGenres: (draft, action) => {
+      draft.movieGenres = action.payload;
     },
   },
 });
@@ -50,6 +56,7 @@ export const {
   setPopularMoviesIds,
   setTopRatedMoviesIds,
   setUpcomingMoviesIds,
+  setMovieGenres,
 } = moviesSlice.actions;
 
 export type AppDispatch = typeof store.dispatch;

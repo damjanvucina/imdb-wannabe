@@ -1,29 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 import {ScreenWrapper} from '../../components/ScreenWrapper';
 import {Movie} from '../../const';
-import {getMovieUri} from '../../services';
+import {getMoviePosterUri} from '../../services';
+import {MovieDetailsOverlay} from '../../components';
 
 type Props = {
   movie: Movie;
 };
 
-export const StyledImage = styled(Image)`
+const StyledImage = styled(Image)`
   height: 303px;
+`;
+
+const StyledContainer = styled(View)`
+  padding-left: 18px;
+  padding-right: 18px;
+`;
+const StyledOverlay = styled(StyledContainer)`
+  position: absolute;
+  z-index: 1;
+  top: 100px;
 `;
 
 export const DetailsScreen: NavigationFunctionComponent<Props> = React.memo(
   ({componentId: navigationStackId, movie}) => {
-    console.log('name je ', movie);
     return (
       <ScreenWrapper navigationStackId={navigationStackId}>
-        <StyledImage
-          source={{
-            uri: getMovieUri(movie),
-          }}
-        ></StyledImage>
+        <StyledImage source={{uri: getMoviePosterUri(movie)}} />
+        <StyledOverlay>
+          <MovieDetailsOverlay movie={movie} />
+        </StyledOverlay>
       </ScreenWrapper>
     );
   },

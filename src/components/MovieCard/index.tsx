@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Image, View, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {getMovieUri} from '../../services';
+import {getMoviePosterUri} from '../../services';
 import {NotFavorite, Favorite} from '../../assets';
 import {
   Movie,
@@ -55,7 +55,7 @@ export const MovieCard: React.FC<Props> = React.memo(
         </FavoritedContainer>
         <StyledImage
           source={{
-            uri: getMovieUri(movie),
+            uri: getMoviePosterUri(movie),
           }}
           width={width}
         />

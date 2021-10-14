@@ -1,5 +1,10 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
-import {Movie, MovieGenres, MovieRuntimeMinutes} from '../const';
+import {
+  MovieCrewMember,
+  Movie,
+  MovieGenres,
+  MovieRuntimeMinutes,
+} from '../const';
 import {transformMovies} from '../services';
 
 interface InitialState {
@@ -10,6 +15,7 @@ interface InitialState {
   favoriteMoviesIds: number[];
   movieGenres: MovieGenres;
   movieRuntimeMinutes: MovieRuntimeMinutes;
+  movieCrew: {[key: number]: MovieCrewMember[]};
 }
 
 const initialState: InitialState = {
@@ -20,6 +26,7 @@ const initialState: InitialState = {
   favoriteMoviesIds: [],
   movieGenres: {},
   movieRuntimeMinutes: {},
+  movieCrew: {},
 };
 
 const moviesSlice = createSlice({
@@ -27,7 +34,6 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setMovies: (draft, action) => {
-      console.log(action.payload[0]);
       draft.allMovies = transformMovies(action.payload);
     },
     setPopularMoviesIds: (draft, action) => {
@@ -47,6 +53,10 @@ const moviesSlice = createSlice({
       const {movieId, runtimeMinutes} = action.payload;
       draft.movieRuntimeMinutes[movieId] = runtimeMinutes;
     },
+    setMovieCrew: (draft, action) => {
+      const {movieId, movieCrew} = action.payload;
+      draft.movieCrew[movieId] = movieCrew;
+    },
   },
 });
 
@@ -64,6 +74,7 @@ export const {
   setUpcomingMoviesIds,
   setMovieGenres,
   setMovieRuntimeMinutes,
+  setMovieCrew,
 } = moviesSlice.actions;
 
 export type AppDispatch = typeof store.dispatch;

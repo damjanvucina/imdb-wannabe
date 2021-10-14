@@ -27,3 +27,6 @@ export const fetchMovieGenres = (): any =>
 
 export const fetchMovieDetails = (movieId: number): any =>
   api.get(`/movie/${movieId}?api_key=${TMDB_API_KEY}`);
+
+export const fetchMovieCredits = (movieId: number): any =>
+  api.get(`/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`);

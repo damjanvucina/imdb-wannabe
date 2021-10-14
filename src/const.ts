@@ -4,7 +4,13 @@ export enum ActionTypes {
   FetchMoviesThunk = 'FETCH_MOVIES_THUNK',
   FetchMovieGenresThunk = 'FETCH_MOVIE_GENRES_THUNK',
   FetchMovieDetailsThunk = 'FETCH_MOVIE_DETAILS_THUNK',
+  FetchMovieCreditsThunk = 'FETCH_MOVIE_CREDITS_THUNK',
 }
+
+export type MovieCrewMember = {
+  name: string;
+  department: string;
+};
 
 export type Movie = {
   name: string;

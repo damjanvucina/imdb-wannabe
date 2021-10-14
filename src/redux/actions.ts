@@ -1,12 +1,13 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import uniqBy from 'lodash.uniqby';
-import {ActionTypes} from '../const';
+import {ActionTypes, MovieCrewMember} from '../const';
 import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
   fetchMovieGenres,
   fetchMovieDetails,
+  fetchMovieCredits,
 } from '../api';
 import {
   setPopularMoviesIds,
@@ -15,6 +16,7 @@ import {
   setMovies,
   setMovieGenres,
   setMovieRuntimeMinutes,
+  setMovieCrew,
 } from './reducer';
 
 export const fetchMoviesThunk = createAsyncThunk(
@@ -72,7 +74,24 @@ export const fetchMovieDetailsThunk = createAsyncThunk(
 
     const movieDetailsResponse = await fetchMovieDetails(movieId);
     const runtimeMinutes = movieDetailsResponse.data.runtime;
-    console.log('minute ', runtimeMinutes);
     dispatch(setMovieRuntimeMinutes({movieId: movieId, runtimeMinutes}));
+  },
+);
+
+export const fetchMovieCreditsThunk = createAsyncThunk(
+  ActionTypes.FetchMovieCreditsThunk,
+  async (movieId, thunkApi) => {
+    const {dispatch} = thunkApi;
+
+    const movieCreditsResponse = await fetchMovieCredits(movieId);
+    const crewMembers = movieCreditsResponse.data.crew.slice(0, 6);
+    const movieCrew: MovieCrewMember[] = [];
+    crewMembers.forEach(member =>
+      movieCrew.unshift({
+        name: member.name,
+        department: member.known_for_department,
+      }),
+    );
+    dispatch(setMovieCrew({movieId, movieCrew}));
   },
 );

@@ -7,6 +7,7 @@ import {DATE_FORMAT, Movie} from '../../const';
 import {colors} from '../../theme';
 import {getYearFromDate, minutesToTimeLabel} from '../../services';
 import {
+  fetchMovieCreditsThunk,
   fetchMovieDetailsThunk,
   isMovieFavoriteSelector,
   movieGenresLabelSelector,
@@ -50,6 +51,7 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
 
   useEffect(() => {
     dispatch(fetchMovieDetailsThunk(movie.id));
+    dispatch(fetchMovieCreditsThunk(movie.id));
   }, [dispatch, movie]);
 
   return (

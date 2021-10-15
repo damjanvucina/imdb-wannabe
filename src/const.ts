@@ -1,5 +1,10 @@
 import {createContext} from 'react';
 
+export type Response<T> = {
+  readonly status: number;
+  readonly data: T;
+};
+
 export enum ActionTypes {
   FetchMoviesThunk = 'FETCH_MOVIES_THUNK',
   FetchMovieGenresThunk = 'FETCH_MOVIE_GENRES_THUNK',
@@ -11,6 +16,11 @@ export enum ActionTypes {
 export type MovieCrewMember = {
   name: string;
   department: string;
+};
+
+export type MovieCrewMemberApiObject = {
+  name: string;
+  known_for_department: string;
 };
 
 export type Movie = {
@@ -37,6 +47,25 @@ export type MovieApiObject = {
   video: boolean;
   voteAverage: number;
   voteCount: number;
+};
+
+export type MovieDetailsApiObject = {
+  adult: number;
+  backdrop_path: string;
+  id: number;
+  overview: string;
+  popularity: number;
+  release_date: string;
+  runtime: number;
+  title: string;
+  video: false;
+  vote_average: number;
+  vote_count: number;
+};
+
+export type MovieCreditsApiObject = {
+  id: number;
+  crew: Array<MovieCrewMember>;
 };
 
 export enum NavigationScreenNames {

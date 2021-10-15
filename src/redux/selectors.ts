@@ -1,6 +1,6 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {RootState} from './reducer';
-import {Movie, MovieGenres} from '../const';
+import {Movie, MovieCrewMember, MovieGenres} from '../const';
 
 export const allMoviesSelector = (state: RootState): Movie[] =>
   state.movies.allMovies;
@@ -65,8 +65,10 @@ export const movieGenresLabelSelector = (
   return genreIds.map(genreId => movieGenres[genreId]).join(', ');
 };
 
-export const movieCrewSelector = (state: RootState, movieId: number) =>
-  state.movies.movieCrew[movieId];
+export const movieCrewSelector = (
+  state: RootState,
+  movieId: number,
+): MovieCrewMember[] => state.movies.movieCrew[movieId];
 
 export const movieOverviewSelector = (state: RootState, movieId: number) =>
   state.movies.allMovies.find(movie => movie.id === movieId)?.overview;

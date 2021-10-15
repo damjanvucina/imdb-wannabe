@@ -1,15 +1,15 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {favoriteMoviesSelector} from '../../redux';
+import {favoriteMoviesIdsSelector} from '../../redux';
 import {MovieList} from '../MovieList';
 
 export const FavoriteMovieCategory: React.FC = React.memo(() => {
-  const favoriteMovies = useSelector(favoriteMoviesSelector);
+  const favoriteMoviesIds = useSelector(favoriteMoviesIdsSelector);
 
   return (
     <MovieList
       title="Favorites"
-      movies={favoriteMovies}
+      moviesIds={favoriteMoviesIds}
       numColumns={3}
       key={3}
     />

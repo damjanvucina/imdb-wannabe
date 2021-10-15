@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FlatList, View, StyleSheet} from 'react-native';
-import {Movie} from '../../const';
 import {Title} from '../../theme';
 import {MovieCard} from '../MovieCard';
 import {useSelector} from 'react-redux';
-import {favoriteMoviesIdsSelector} from '../../redux';
+import {favoriteMoviesIdsSelector, getMoviesByIdsSelector} from '../../redux';
 
 const StyledTitle = styled(Title)`
   padding-bottom: 8px;
@@ -29,15 +28,19 @@ const StyledMovieCardContainer = styled(View)`
 
 type Props = {
   title: string;
-  movies: Movie[];
+  moviesIds: number[];
   isHorizontal?: boolean;
   numColumns?: number;
   key?: number;
 };
 
 export const MovieList: React.FC<Props> = React.memo(
-  ({title, movies, isHorizontal, numColumns, key}) => {
+  ({title, moviesIds, isHorizontal, numColumns, key}) => {
     const favoriteMoviesIds = useSelector(favoriteMoviesIdsSelector);
+    const movies = useSelector(state =>
+      getMoviesByIdsSelector(state, moviesIds),
+    );
+
     return (
       <CategoryContainer>
         <StyledTitle>{title}</StyledTitle>

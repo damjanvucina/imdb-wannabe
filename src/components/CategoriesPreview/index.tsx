@@ -3,21 +3,25 @@ import {useSelector} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {MovieList} from '../MovieList';
 import {
-  popularMoviesSelector,
-  topRatedMoviesSelector,
-  upcomingMoviesSelector,
+  popularMoviesIdsSelector,
+  topRatedMoviesIdsSelector,
+  upcomingMoviesIdsSelector,
 } from '../../redux';
 
 export const CategoriesPreview: React.FC = React.memo(() => {
-  const popularMovies = useSelector(popularMoviesSelector);
-  const topRatedMovies = useSelector(topRatedMoviesSelector);
-  const upcomingMovies = useSelector(upcomingMoviesSelector);
+  const popularMoviesIds = useSelector(popularMoviesIdsSelector);
+  const topRatedMoviesIds = useSelector(topRatedMoviesIdsSelector);
+  const upcomingMoviesIds = useSelector(upcomingMoviesIdsSelector);
 
   return (
     <ScrollView>
-      <MovieList title="What's popular" movies={popularMovies} isHorizontal />
-      <MovieList title="Top Rated" movies={topRatedMovies} isHorizontal />
-      <MovieList title="Upcoming" movies={upcomingMovies} isHorizontal />
+      <MovieList
+        title="What's popular"
+        moviesIds={popularMoviesIds}
+        isHorizontal
+      />
+      <MovieList title="Top Rated" moviesIds={topRatedMoviesIds} isHorizontal />
+      <MovieList title="Upcoming" moviesIds={upcomingMoviesIds} isHorizontal />
     </ScrollView>
   );
 });

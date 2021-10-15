@@ -6,6 +6,7 @@ import {ScreenWrapper} from '../../components/ScreenWrapper';
 import {Movie} from '../../const';
 import {getMoviePosterUri} from '../../services';
 import {MovieDetailsOverlay} from '../../components';
+import {MovieDetailsOverview} from '../MovieDetailsOverview';
 
 type Props = {
   movie: Movie;
@@ -33,6 +34,7 @@ export const DetailsScreen: NavigationFunctionComponent<Props> = React.memo(
         <StyledOverlay>
           <MovieDetailsOverlay movie={movie} />
         </StyledOverlay>
+        <MovieDetailsOverview movieId={movie.id} />
       </ScreenWrapper>
     );
   },

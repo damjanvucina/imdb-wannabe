@@ -1,4 +1,5 @@
 import {Navigation} from 'react-native-navigation';
+import {LogBox} from 'react-native';
 import {HomeScreen, DetailsScreen, FavoritesScreen} from './src/fragments';
 import {Header} from './src/components';
 import {NavigationScreenNames} from './src/const';

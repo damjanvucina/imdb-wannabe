@@ -64,3 +64,6 @@ export const movieGenresLabelSelector = (
 
   return genreIds.map(genreId => movieGenres[genreId]).join(', ');
 };
+
+export const movieCrewSelector = (state: RootState, movieId: number) =>
+  state.movies.movieCrew[movieId];

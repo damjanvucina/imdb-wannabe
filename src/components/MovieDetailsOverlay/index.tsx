@@ -46,8 +46,6 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
   const isMovieFavorite = useSelector(state =>
     isMovieFavoriteSelector(state, movie.id),
   );
-  const formattedLabel = minutesToTimeLabel(movieRuntimeMinutes);
-  console.log(formattedLabel);
 
   useEffect(() => {
     dispatch(fetchMovieDetailsThunk(movie.id));

@@ -1,8 +1,12 @@
 import dayjs from 'dayjs';
 import {Movie, MovieApiObject} from '../const';
 
-export const getMoviePosterUri = (movie: Movie): string =>
-  `https://image.tmdb.org/t/p/w500${movie.posterUrl}`;
+export const getMoviePosterUri = (movie: Movie): string => {
+  if (!movie) {
+    return '';
+  }
+  return `https://image.tmdb.org/t/p/w500${movie.posterUrl}`;
+};
 
 export const transformMovies = (moviesApi: MovieApiObject[]): Movie[] => {
   return moviesApi.map(movieElement => ({

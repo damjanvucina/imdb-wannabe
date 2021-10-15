@@ -35,7 +35,7 @@ type Props = {
   key?: number;
 };
 
-export const MovieCategory: React.FC<Props> = React.memo(
+export const MovieList: React.FC<Props> = React.memo(
   ({title, movies, isHorizontal, numColumns, key}) => {
     const favoriteMoviesIds = useSelector(favoriteMoviesIdsSelector);
     return (

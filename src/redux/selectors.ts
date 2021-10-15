@@ -59,6 +59,11 @@ export const favoriteMoviesSelector = createSelector(
   },
 );
 
+export const getMovieByIdSelector = (
+  state: RootState,
+  movieId: number,
+): Movie => state.movies.allMovies[movieId];
+
 export const getMoviesByIdsSelector = (
   state: RootState,
   moviesIds: number[],

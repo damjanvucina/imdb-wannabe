@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import {FlatList, View, StyleSheet} from 'react-native';
 import {Title} from '../../theme';
 import {MovieCard} from '../MovieCard';
-import {useSelector} from 'react-redux';
-import {favoriteMoviesIdsSelector, getMoviesByIdsSelector} from '../../redux';
 
 const StyledTitle = styled(Title)`
   padding-bottom: 8px;
@@ -36,29 +34,22 @@ type Props = {
 
 export const MovieList: React.FC<Props> = React.memo(
   ({title, moviesIds, isHorizontal, numColumns, key}) => {
-    const favoriteMoviesIds = useSelector(favoriteMoviesIdsSelector);
-    const movies = useSelector(state =>
-      getMoviesByIdsSelector(state, moviesIds),
-    );
-
     return (
       <CategoryContainer>
         <StyledTitle>{title}</StyledTitle>
         <FlatList
-          data={movies}
-          renderItem={({item: movie}) => {
-            const isFavorite = favoriteMoviesIds.includes(movie.id);
+          data={moviesIds}
+          renderItem={({item: movieId}) => {
             if (!numColumns) {
-              return <MovieCard movie={movie} isFavorite={isFavorite} />;
+              return <MovieCard movieId={movieId} key={movieId} />;
             }
             return (
-              <StyledMovieCardContainer>
-                <MovieCard movie={movie} width={112} isFavorite={isFavorite} />
+              <StyledMovieCardContainer key={movieId}>
+                <MovieCard movieId={movieId} width={112} />
               </StyledMovieCardContainer>
             );
           }}
           ItemSeparatorComponent={MovieCardSeparator}
-          keyExtractor={movie => `${movie.id}`}
           horizontal={isHorizontal}
           contentContainerStyle={styles.flatListContentContainer}
           showsVerticalScrollIndicator={false}

@@ -69,7 +69,7 @@ export const fetchMovieGenresThunk = createAsyncThunk(
 
 export const fetchMovieDetailsThunk = createAsyncThunk(
   ActionTypes.FetchMovieDetailsThunk,
-  async (movieId, thunkAPI) => {
+  async (movieId: number, thunkAPI) => {
     const {dispatch} = thunkAPI;
 
     const movieDetailsResponse = await fetchMovieDetails(movieId);
@@ -80,7 +80,7 @@ export const fetchMovieDetailsThunk = createAsyncThunk(
 
 export const fetchMovieCreditsThunk = createAsyncThunk(
   ActionTypes.FetchMovieCreditsThunk,
-  async (movieId, thunkApi) => {
+  async (movieId: number, thunkApi) => {
     const {dispatch} = thunkApi;
 
     const movieCreditsResponse = await fetchMovieCredits(movieId);

@@ -23,35 +23,37 @@ export const movieGenresSelector = (state: RootState): MovieGenres =>
 export const movieRuntimeMinutesSelector = (
   state: RootState,
   movieId: number,
-) => state.movies.movieRuntimeMinutes[movieId];
+): number => state.movies.movieRuntimeMinutes[movieId];
 
-export const isMovieFavoriteSelector = (state: RootState, movieId: number) =>
-  state.movies.favoriteMoviesIds.includes(movieId);
+export const isMovieFavoriteSelector = (
+  state: RootState,
+  movieId: number,
+): boolean => state.movies.favoriteMoviesIds.includes(movieId);
 
 export const popularMoviesSelector = createSelector(
   [allMoviesSelector, popularMoviesIdsSelector],
-  (allMovies, popularMoviesIds) => {
+  (allMovies, popularMoviesIds): Movie[] => {
     return allMovies.filter(movie => popularMoviesIds.includes(movie.id));
   },
 );
 
 export const topRatedMoviesSelector = createSelector(
   [allMoviesSelector, topRatedMoviesIdsSelector],
-  (allMovies, topRatedMoviesIds) => {
+  (allMovies, topRatedMoviesIds): Movie[] => {
     return allMovies.filter(movie => topRatedMoviesIds.includes(movie.id));
   },
 );
 
 export const upcomingMoviesSelector = createSelector(
   [allMoviesSelector, upcomingMoviesIdsSelector],
-  (allMovies, upcomingMoviesIds) => {
+  (allMovies, upcomingMoviesIds): Movie[] => {
     return allMovies.filter(movie => upcomingMoviesIds.includes(movie.id));
   },
 );
 
 export const favoriteMoviesSelector = createSelector(
   [allMoviesSelector, favoriteMoviesIdsSelector],
-  (allMovies, favoriteMoviesIds) => {
+  (allMovies, favoriteMoviesIds): Movie[] => {
     return allMovies.filter(movie => favoriteMoviesIds.includes(movie.id));
   },
 );
@@ -59,7 +61,7 @@ export const favoriteMoviesSelector = createSelector(
 export const movieGenresLabelSelector = (
   state: RootState,
   genreIds: number[],
-) => {
+): string => {
   const movieGenres = movieGenresSelector(state);
 
   return genreIds.map(genreId => movieGenres[genreId]).join(', ');
@@ -70,5 +72,9 @@ export const movieCrewSelector = (
   movieId: number,
 ): MovieCrewMember[] => state.movies.movieCrew[movieId];
 
-export const movieOverviewSelector = (state: RootState, movieId: number) =>
-  state.movies.allMovies.find(movie => movie.id === movieId)?.overview;
+export const movieOverviewSelector = (
+  state: RootState,
+  movieId: number,
+): string | undefined =>
+  (state.movies.allMovies as Movie[]).find(movie => movie.id === movieId)
+    ?.overview;

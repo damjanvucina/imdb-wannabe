@@ -95,6 +95,20 @@ HomeScreen.options = {
   },
 };
 
+DetailsScreen.options = {
+  topBar: {
+    title: {
+      text: 'Details',
+      component: {
+        name: 'Header',
+      },
+    },
+  },
+  bottomTab: {
+    text: 'Home',
+  },
+};
+
 FavoritesScreen.options = {
   topBar: {
     title: {

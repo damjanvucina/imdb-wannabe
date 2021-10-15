@@ -5,6 +5,7 @@ export enum ActionTypes {
   FetchMovieGenresThunk = 'FETCH_MOVIE_GENRES_THUNK',
   FetchMovieDetailsThunk = 'FETCH_MOVIE_DETAILS_THUNK',
   FetchMovieCreditsThunk = 'FETCH_MOVIE_CREDITS_THUNK',
+  ToggleIsMovieFavorite = 'TOGGLE_IS_MOVIE_FAVORITE',
 }
 
 export type MovieCrewMember = {

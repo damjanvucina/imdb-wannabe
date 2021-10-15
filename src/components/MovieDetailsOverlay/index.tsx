@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
@@ -12,6 +12,7 @@ import {
   isMovieFavoriteSelector,
   movieGenresLabelSelector,
   movieRuntimeMinutesSelector,
+  toggleIsMovieFavorite,
 } from '../../redux';
 import {FavoriteIcon} from '../../fragments/FavoriteIcon';
 
@@ -31,7 +32,7 @@ const StyledLabel = styled(Text)`
 const StyledRuntimeLabel = styled(Text)`
   font-weight: bold;
 `;
-const FavoriteIconContainer = styled(View)`
+const FavoriteIconContainer = styled(TouchableOpacity)`
   right: 10px;
 `;
 
@@ -64,7 +65,9 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
           {` ${minutesToTimeLabel(movieRuntimeMinutes)}`}
         </StyledRuntimeLabel>
       </StyledLabel>
-      <FavoriteIconContainer>
+      <FavoriteIconContainer
+        onPress={() => dispatch(toggleIsMovieFavorite(movie.id))}
+      >
         <FavoriteIcon isFavorite={isMovieFavorite} />
       </FavoriteIconContainer>
     </View>

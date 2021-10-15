@@ -1,4 +1,4 @@
-import {createAsyncThunk} from '@reduxjs/toolkit';
+import {createAction, createAsyncThunk} from '@reduxjs/toolkit';
 import uniqBy from 'lodash.uniqby';
 import {ActionTypes, MovieCrewMember} from '../const';
 import {
@@ -94,4 +94,8 @@ export const fetchMovieCreditsThunk = createAsyncThunk(
     );
     dispatch(setMovieCrew({movieId, movieCrew}));
   },
+);
+
+export const toggleIsMovieFavorite = createAction<number>(
+  ActionTypes.ToggleIsMovieFavorite,
 );

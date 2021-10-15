@@ -4,6 +4,7 @@ import {
   Movie,
   MovieGenres,
   MovieRuntimeMinutes,
+  ActionTypes,
 } from '../const';
 import {transformMovies} from '../services';
 
@@ -39,7 +40,6 @@ const moviesSlice = createSlice({
     },
     setPopularMoviesIds: (draft, action) => {
       draft.popularMoviesIds = action.payload;
-      draft.favoriteMoviesIds = action.payload;
     },
     setTopRatedMoviesIds: (draft, action) => {
       draft.topRatedMoviesIds = action.payload;
@@ -58,6 +58,20 @@ const moviesSlice = createSlice({
       const {movieId, movieCrew} = action.payload;
       draft.movieCrew[movieId] = movieCrew;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(ActionTypes.ToggleIsMovieFavorite, (draft, action) => {
+      const movieId = action.payload;
+      const isMovieCurrentlyFavorite =
+        draft.favoriteMoviesIds.includes(movieId);
+      if (!isMovieCurrentlyFavorite) {
+        draft.favoriteMoviesIds.unshift(movieId);
+      } else {
+        draft.favoriteMoviesIds = draft.favoriteMoviesIds.filter(
+          currentMovieId => currentMovieId !== movieId,
+        );
+      }
+    });
   },
 });
 

@@ -6,10 +6,9 @@ import {
   MovieRuntimeMinutes,
   ActionTypes,
 } from '../const';
-import {transformMovies} from '../services';
 
 interface InitialState {
-  allMovies: Movie[];
+  allMovies: {[key: number]: Movie};
   popularMoviesIds: number[];
   topRatedMoviesIds: number[];
   upcomingMoviesIds: number[];
@@ -20,7 +19,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  allMovies: [],
+  allMovies: {},
   popularMoviesIds: [],
   topRatedMoviesIds: [],
   upcomingMoviesIds: [],
@@ -35,8 +34,7 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setMovies: (draft, action) => {
-      console.log(action.payload[0]);
-      draft.allMovies = transformMovies(action.payload);
+      draft.allMovies = action.payload;
     },
     setPopularMoviesIds: (draft, action) => {
       draft.popularMoviesIds = action.payload;

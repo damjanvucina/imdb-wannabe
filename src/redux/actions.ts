@@ -39,6 +39,18 @@ export const fetchMoviesThunk = createAsyncThunk(
     const upcomingMovies = upcomingMoviesResponse.data.results;
     const allMovies = [...popularMovies, ...topRatedMovies, ...upcomingMovies];
     const allUniqueMovies = uniqBy(allMovies, movie => movie.id);
+    const allUniqueMoviesObj = allUniqueMovies.reduce((acc, curr) => {
+      // @ts-ignore
+      acc[curr.id] = {
+        id: curr.id,
+        name: curr.title,
+        posterUrl: curr.backdrop_path,
+        releaseDate: curr.release_date,
+        genreIds: curr.genre_ids,
+        overview: curr.overview,
+      };
+      return acc;
+    }, {});
 
     const popularMoviesIds = popularMovies.map(movie => movie.id);
     const topRatedMoviesIds = topRatedMovies.map(movie => movie.id);
@@ -47,7 +59,7 @@ export const fetchMoviesThunk = createAsyncThunk(
     dispatch(setPopularMoviesIds(popularMoviesIds));
     dispatch(setTopRatedMoviesIds(topRatedMoviesIds));
     dispatch(setUpcomingMoviesIds(upcomingMoviesIds));
-    dispatch(setMovies(allUniqueMovies));
+    dispatch(setMovies(allUniqueMoviesObj));
   },
 );
 

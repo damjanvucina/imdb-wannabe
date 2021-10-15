@@ -1,8 +1,9 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {RootState} from './reducer';
+import pick from 'lodash.pick';
 import {Movie, MovieCrewMember, MovieGenres} from '../const';
 
-export const allMoviesSelector = (state: RootState): Movie[] =>
+export const allMoviesSelector = (state: RootState): {[key: number]: Movie} =>
   state.movies.allMovies;
 
 export const popularMoviesIdsSelector = (state: RootState): number[] =>
@@ -33,28 +34,28 @@ export const isMovieFavoriteSelector = (
 export const popularMoviesSelector = createSelector(
   [allMoviesSelector, popularMoviesIdsSelector],
   (allMovies, popularMoviesIds): Movie[] => {
-    return allMovies.filter(movie => popularMoviesIds.includes(movie.id));
+    return Object.values(pick(allMovies, popularMoviesIds));
   },
 );
 
 export const topRatedMoviesSelector = createSelector(
   [allMoviesSelector, topRatedMoviesIdsSelector],
   (allMovies, topRatedMoviesIds): Movie[] => {
-    return allMovies.filter(movie => topRatedMoviesIds.includes(movie.id));
+    return Object.values(pick(allMovies, topRatedMoviesIds));
   },
 );
 
 export const upcomingMoviesSelector = createSelector(
   [allMoviesSelector, upcomingMoviesIdsSelector],
   (allMovies, upcomingMoviesIds): Movie[] => {
-    return allMovies.filter(movie => upcomingMoviesIds.includes(movie.id));
+    return Object.values(pick(allMovies, upcomingMoviesIds));
   },
 );
 
 export const favoriteMoviesSelector = createSelector(
   [allMoviesSelector, favoriteMoviesIdsSelector],
   (allMovies, favoriteMoviesIds): Movie[] => {
-    return allMovies.filter(movie => favoriteMoviesIds.includes(movie.id));
+    return Object.values(pick(allMovies, favoriteMoviesIds));
   },
 );
 
@@ -75,6 +76,4 @@ export const movieCrewSelector = (
 export const movieOverviewSelector = (
   state: RootState,
   movieId: number,
-): string | undefined =>
-  (state.movies.allMovies as Movie[]).find(movie => movie.id === movieId)
-    ?.overview;
+): string | undefined => state.movies.allMovies[movieId]?.overview;

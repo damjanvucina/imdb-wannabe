@@ -34,6 +34,7 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setMovies: (draft, action) => {
+      console.log(action.payload[0]);
       draft.allMovies = transformMovies(action.payload);
     },
     setPopularMoviesIds: (draft, action) => {

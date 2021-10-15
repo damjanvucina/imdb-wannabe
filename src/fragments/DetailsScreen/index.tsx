@@ -32,9 +32,9 @@ export const DetailsScreen: NavigationFunctionComponent<Props> = React.memo(
       <ScreenWrapper navigationStackId={navigationStackId}>
         <StyledImage source={{uri: getMoviePosterUri(movie)}} />
         <StyledOverlay>
-          <MovieDetailsOverlay movie={movie} />
+          {movie && <MovieDetailsOverlay movie={movie} />}
         </StyledOverlay>
-        <MovieDetailsOverview movieId={movie.id} />
+        <MovieDetailsOverview movieId={movie?.id} />
       </ScreenWrapper>
     );
   },

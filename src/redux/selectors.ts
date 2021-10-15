@@ -67,3 +67,6 @@ export const movieGenresLabelSelector = (
 
 export const movieCrewSelector = (state: RootState, movieId: number) =>
   state.movies.movieCrew[movieId];
+
+export const movieOverviewSelector = (state: RootState, movieId: number) =>
+  state.movies.allMovies.find(movie => movie.id === movieId)?.overview;

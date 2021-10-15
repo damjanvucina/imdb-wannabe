@@ -18,6 +18,7 @@ export type Movie = {
   posterUrl: string;
   releaseDate: string;
   genreIds: number[];
+  overview: string;
 };
 
 export type MovieApiObject = {

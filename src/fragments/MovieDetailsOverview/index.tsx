@@ -1,18 +1,22 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import styled from 'styled-components';
-import {movieCrewSelector} from '../../redux';
-import {MovieDetailsItem} from '../../components/MovieDetailsItem';
+import {movieCrewSelector, movieOverviewSelector} from '../../redux';
+import {MovieDetailsItem} from '../../components';
 
 type Props = {
   movieId: number;
 };
 
 const StyledContainer = styled(View)`
+  margin: 16px 16px;
+`;
+
+const StyledCrewContainer = styled(View)`
   flex-flow: row wrap;
   justify-content: space-between;
-  margin: 10px 16px;
+  margin-top: 16px;
 `;
 
 const StyledDetailsContainer = styled(View)`
@@ -21,11 +25,23 @@ const StyledDetailsContainer = styled(View)`
   margin-bottom: 10px;
 `;
 
+const StyledTitle = styled(Text)`
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 28px;
+`;
+
 export const MovieDetailsOverview: React.FC<Props> = React.memo(({movieId}) => {
   const movieCrew = useSelector(state => movieCrewSelector(state, movieId));
+  const movieOverview = useSelector(state =>
+    movieOverviewSelector(state, movieId),
+  );
+
   return (
-    <>
-      <StyledContainer>
+    <StyledContainer>
+      <StyledTitle>Overview</StyledTitle>
+      <Text>{movieOverview}</Text>
+      <StyledCrewContainer>
         {movieCrew &&
           movieCrew.map((movieMember, index) => {
             return (
@@ -38,7 +54,7 @@ export const MovieDetailsOverview: React.FC<Props> = React.memo(({movieId}) => {
               </StyledDetailsContainer>
             );
           })}
-      </StyledContainer>
-    </>
+      </StyledCrewContainer>
+    </StyledContainer>
   );
 });

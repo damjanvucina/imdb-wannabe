@@ -15,6 +15,7 @@ export const transformMovies = (moviesApi: MovieApiObject[]): Movie[] => {
     posterUrl: movieElement.backdrop_path,
     releaseDate: movieElement.release_date,
     genreIds: movieElement.genre_ids,
+    overview: movieElement.overview,
   }));
 };
 

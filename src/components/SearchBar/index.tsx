@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {TextInput} from 'react-native';
+import {useDispatch} from 'react-redux';
 import styled from 'styled-components/native';
 import {Search} from '../../assets';
 import {colors} from '../../theme';
-import {useDispatch} from 'react-redux';
 import {fetchMoviesThunk, fetchMovieGenresThunk} from '../../redux';
 
 const StyledTextInputPrimary = styled(TextInput)`

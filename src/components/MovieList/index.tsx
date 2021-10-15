@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {FlatList, View, StyleSheet} from 'react-native';
+import {FlatList, View, StyleSheet, ViewStyle} from 'react-native';
 import {Title} from '../../theme';
 import {MovieCard} from '../MovieCard';
 
@@ -30,10 +30,18 @@ type Props = {
   isHorizontal?: boolean;
   numColumns?: number;
   key?: number;
+  flatListContainerStyle?: ViewStyle;
 };
 
 export const MovieList: React.FC<Props> = React.memo(
-  ({title, moviesIds, isHorizontal, numColumns, key}) => {
+  ({
+    title,
+    moviesIds,
+    isHorizontal,
+    numColumns,
+    key,
+    flatListContainerStyle,
+  }) => {
     return (
       <CategoryContainer>
         <StyledTitle>{title}</StyledTitle>
@@ -51,7 +59,10 @@ export const MovieList: React.FC<Props> = React.memo(
           }}
           ItemSeparatorComponent={MovieCardSeparator}
           horizontal={isHorizontal}
-          contentContainerStyle={styles.flatListContentContainer}
+          contentContainerStyle={[
+            styles.flatListContentContainer,
+            flatListContainerStyle,
+          ]}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           numColumns={numColumns}

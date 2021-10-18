@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {MovieList} from './MovieList';
+import {MovieList} from '../components/MovieList';
 import {
   popularMoviesIdsSelector,
   topRatedMoviesIdsSelector,

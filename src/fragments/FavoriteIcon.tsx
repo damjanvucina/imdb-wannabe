@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {View} from 'react-native';
-import {NotFavorite, Favorite} from '../../assets';
-import {colors} from '../../theme';
+import {NotFavorite, Favorite} from '../assets';
+import {colors} from '../theme';
 
 type Props = {
   isFavorite?: boolean;

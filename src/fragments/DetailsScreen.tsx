@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {View, Image} from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
-import {ScreenWrapper} from '../../components/ScreenWrapper';
-import {Movie} from '../../const';
-import {getMoviePosterUri} from '../../services';
-import {MovieDetailsOverlay} from '../../components';
-import {MovieDetailsOverview} from '../MovieDetailsOverview';
+import {ScreenWrapper} from '../components/ScreenWrapper';
+import {Movie} from '../const';
+import {getMoviePosterUri} from '../services';
+import {MovieDetailsOverlay} from '../components';
+import {MovieDetailsOverview} from './MovieDetailsOverview';
 
 type Props = {
   movie: Movie;

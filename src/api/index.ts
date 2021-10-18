@@ -19,7 +19,6 @@ enum routes {
 
 const api = axios.create({baseURL: TMDB_API_URL});
 
-// TODO: update types
 export const fetchPopularMovies = (): Promise<
   Response<{[results: string]: Array<MovieApiObject>}>
 > => api.get(`${routes.FetchPopularMovies}?api_key=${TMDB_API_KEY}`);

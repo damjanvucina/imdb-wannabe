@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity, ViewStyle} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {FavoriteIcon} from '../../fragments';
 import {getMoviePosterUri} from '../../services';
@@ -9,17 +9,18 @@ import {useSelector} from 'react-redux';
 import {getMovieByIdSelector, isMovieFavoriteSelector} from '../../redux';
 
 const StyledImage = styled(Image)`
-  width: ${props => (props.width ? `${props.width}px` : '122px')};
-  height: 179px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
 `;
 
 type Props = {
   movieId: number;
   width?: number;
+  style?: ViewStyle;
 };
 
-export const MovieCard: React.FC<Props> = React.memo(({movieId, width}) => {
+export const MovieCard: React.FC<Props> = React.memo(({movieId, style}) => {
   const currentNavigationStackId = useContext(NavigationStackIdContext);
   const isFavorite = useSelector(state =>
     isMovieFavoriteSelector(state, movieId),
@@ -38,13 +39,12 @@ export const MovieCard: React.FC<Props> = React.memo(({movieId, width}) => {
   };
 
   return (
-    <TouchableOpacity onPress={navigateToMovieDetails}>
+    <TouchableOpacity onPress={navigateToMovieDetails} style={style}>
       <FavoriteIcon isFavorite={isFavorite} />
       <StyledImage
         source={{
           uri: getMoviePosterUri(movie),
         }}
-        width={width}
       />
     </TouchableOpacity>
   );

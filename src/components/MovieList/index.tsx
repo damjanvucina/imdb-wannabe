@@ -20,8 +20,10 @@ const MovieCardSeparator = styled(View)`
   height: 8px;
 `;
 
-const StyledMovieCardContainer = styled(View)`
+const StyledMovieCard = styled(MovieCard)<{isHorizontal?: boolean}>`
   margin-right: 10px;
+  width: ${props => (props.isHorizontal ? '122px' : '112px')};
+  height: 190px;
 `;
 
 type Props = {
@@ -34,28 +36,23 @@ type Props = {
 };
 
 export const MovieList: React.FC<Props> = React.memo(
-  ({
-    title,
-    moviesIds,
-    isHorizontal,
-    numColumns,
-    key,
-    flatListContainerStyle,
-  }) => {
+  ({title, moviesIds, isHorizontal, numColumns, flatListContainerStyle}) => {
     return (
       <CategoryContainer>
         <StyledTitle>{title}</StyledTitle>
         <FlatList
           data={moviesIds}
           renderItem={({item: movieId}) => {
-            if (!numColumns) {
-              return <MovieCard movieId={movieId} key={movieId} />;
+            if (isHorizontal) {
+              return (
+                <StyledMovieCard
+                  movieId={movieId}
+                  key={movieId}
+                  isHorizontal={isHorizontal}
+                />
+              );
             }
-            return (
-              <StyledMovieCardContainer key={movieId}>
-                <MovieCard movieId={movieId} width={112} />
-              </StyledMovieCardContainer>
-            );
+            return <StyledMovieCard movieId={movieId} key={movieId} />;
           }}
           ItemSeparatorComponent={MovieCardSeparator}
           horizontal={isHorizontal}
@@ -66,7 +63,6 @@ export const MovieList: React.FC<Props> = React.memo(
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           numColumns={numColumns}
-          key={key}
         />
       </CategoryContainer>
     );

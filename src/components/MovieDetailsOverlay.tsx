@@ -3,9 +3,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
-import {DATE_FORMAT, Movie} from '../../const';
-import {colors} from '../../theme';
-import {getYearFromDate, minutesToTimeLabel} from '../../services';
+import {DATE_FORMAT, Movie} from '../const';
+import {colors} from '../theme';
+import {getYearFromDate, minutesToTimeLabel} from '../services';
 import {
   fetchMovieCreditsThunk,
   fetchMovieDetailsThunk,
@@ -13,8 +13,8 @@ import {
   movieGenresLabelSelector,
   movieRuntimeMinutesSelector,
   toggleIsMovieFavorite,
-} from '../../redux';
-import {FavoriteIcon} from '../../fragments/FavoriteIcon';
+} from '../redux';
+import {FavoriteIcon} from '../fragments/FavoriteIcon';
 
 type Props = {
   movie: Movie;

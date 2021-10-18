@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FlatList, View, StyleSheet, ViewStyle} from 'react-native';
-import {Title} from '../../theme';
-import {MovieCard} from '../MovieCard';
+import {Title} from '../theme';
+import {MovieCard} from './MovieCard';
 
 const StyledTitle = styled(Title)`
   padding-bottom: 8px;

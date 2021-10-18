@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import {Image, TouchableOpacity, ViewStyle} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {FavoriteIcon} from '../../fragments';
-import {getMoviePosterUri} from '../../services';
-import {NavigationScreenNames, NavigationStackIdContext} from '../../const';
+import {FavoriteIcon} from '../fragments';
+import {getMoviePosterUri} from '../services';
+import {NavigationScreenNames, NavigationStackIdContext} from '../const';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
-import {getMovieByIdSelector, isMovieFavoriteSelector} from '../../redux';
+import {getMovieByIdSelector, isMovieFavoriteSelector} from '../redux';
 
 const StyledImage = styled(Image)`
   width: 100%;

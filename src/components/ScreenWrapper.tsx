@@ -1,8 +1,8 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {SafeAreaView} from 'react-native';
-import {store} from '../../redux/reducer';
-import {NavigationStackIdContext} from '../../const';
+import {store} from '../redux/reducer';
+import {NavigationStackIdContext} from '../const';
 
 type Props = {
   children: React.ReactNode | React.ReactNodeArray;

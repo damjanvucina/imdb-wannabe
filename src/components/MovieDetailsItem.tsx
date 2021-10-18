@@ -7,10 +7,6 @@ type Props = {
   description: string;
 };
 
-const StyledTitle = styled(Text)`
-  font-weight: 800;
-  margin-bottom: 5px;
-`;
 export const MovieDetailsItem: React.FC<Props> = React.memo(
   ({title, description}) => {
     return (
@@ -21,3 +17,8 @@ export const MovieDetailsItem: React.FC<Props> = React.memo(
     );
   },
 );
+
+const StyledTitle = styled(Text)`
+  font-weight: 800;
+  margin-bottom: 5px;
+`;

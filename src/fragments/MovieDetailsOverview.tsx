@@ -9,28 +9,6 @@ type Props = {
   movieId: number;
 };
 
-const StyledContainer = styled(View)`
-  margin: 16px 16px;
-`;
-
-const StyledCrewContainer = styled(View)`
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-top: 16px;
-`;
-
-const StyledDetailsContainer = styled(View)`
-  flex: 0 0 33%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
-
-const StyledTitle = styled(Text)`
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 28px;
-`;
-
 export const MovieDetailsOverview: React.FC<Props> = React.memo(({movieId}) => {
   const movieCrew = useSelector(state => movieCrewSelector(state, movieId));
   const movieOverview = useSelector(state =>
@@ -58,3 +36,25 @@ export const MovieDetailsOverview: React.FC<Props> = React.memo(({movieId}) => {
     </StyledContainer>
   );
 });
+
+const StyledContainer = styled(View)`
+  margin: 16px 16px;
+`;
+
+const StyledCrewContainer = styled(View)`
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 16px;
+`;
+
+const StyledDetailsContainer = styled(View)`
+  flex: 0 0 33%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const StyledTitle = styled(Text)`
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 28px;
+`;

@@ -7,6 +7,15 @@ import {colors} from '../theme';
 type Props = {
   isFavorite?: boolean;
 };
+
+export const FavoriteIcon: React.FC<Props> = React.memo(({isFavorite}) => {
+  return (
+    <FavoritedContainer>
+      {!isFavorite ? <NotFavorite /> : <Favorite />}
+    </FavoritedContainer>
+  );
+});
+
 const FavoritedContainer = styled(View)`
   position: absolute;
   z-index: 1;
@@ -17,10 +26,3 @@ const FavoritedContainer = styled(View)`
   border-radius: 50px;
   opacity: 0.6;
 `;
-export const FavoriteIcon: React.FC<Props> = React.memo(({isFavorite}) => {
-  return (
-    <FavoritedContainer>
-      {!isFavorite ? <NotFavorite /> : <Favorite />}
-    </FavoritedContainer>
-  );
-});

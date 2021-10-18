@@ -1,18 +1,12 @@
 import React, {useContext} from 'react';
 import {Image, TouchableOpacity, ViewStyle} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import styled from 'styled-components';
+import {useSelector} from 'react-redux';
 import {FavoriteIcon} from '../components';
 import {getMoviePosterUri} from '../services';
 import {NavigationScreenNames, NavigationStackIdContext} from '../const';
-import styled from 'styled-components';
-import {useSelector} from 'react-redux';
 import {getMovieByIdSelector, isMovieFavoriteSelector} from '../redux';
-
-const StyledImage = styled(Image)`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-`;
 
 type Props = {
   movieId: number;
@@ -49,3 +43,9 @@ export const MovieCard: React.FC<Props> = React.memo(({movieId, style}) => {
     </TouchableOpacity>
   );
 });
+
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+`;

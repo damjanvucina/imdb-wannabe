@@ -20,22 +20,6 @@ type Props = {
   movie: Movie;
 };
 
-const StyledMovieTitle = styled(Text)`
-  color: ${colors.textOverlay};
-  font-weight: 500;
-  font-size: 24px;
-  margin-bottom: 5px;
-`;
-const StyledLabel = styled(Text)`
-  color: ${colors.textOverlay};
-`;
-const StyledRuntimeLabel = styled(Text)`
-  font-weight: bold;
-`;
-const FavoriteIconContainer = styled(TouchableOpacity)`
-  right: 10px;
-`;
-
 export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
   const dispatch = useDispatch();
   const movieGenresLabel = useSelector(state =>
@@ -73,3 +57,19 @@ export const MovieDetailsOverlay: React.FC<Props> = React.memo(({movie}) => {
     </View>
   );
 });
+
+const StyledMovieTitle = styled(Text)`
+  color: ${colors.textOverlay};
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 5px;
+`;
+const StyledLabel = styled(Text)`
+  color: ${colors.textOverlay};
+`;
+const StyledRuntimeLabel = styled(Text)`
+  font-weight: bold;
+`;
+const FavoriteIconContainer = styled(TouchableOpacity)`
+  right: 10px;
+`;

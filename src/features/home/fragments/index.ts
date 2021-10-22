@@ -5,4 +5,3 @@ export * from './CategoriesPreview';
 export * from './MovieCard';
 export * from './MovieDetailsOverlay';
 export * from './ScreenWrapper';
-export * from './SearchBar';

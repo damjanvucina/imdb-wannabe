@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 import {ScrollView} from 'react-native';
-import {SearchBar} from './SearchBar';
+import {SearchBar} from '../../search/fragments';
 import {ScreenWrapper} from './ScreenWrapper';
 import {CategoriesPreview} from './CategoriesPreview';
 

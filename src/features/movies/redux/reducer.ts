@@ -1,4 +1,4 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit';
+import {configureStore, createSlice, combineReducers} from '@reduxjs/toolkit';
 import {
   MovieCrewMember,
   Movie,
@@ -73,10 +73,12 @@ const moviesSlice = createSlice({
   },
 });
 
+const rootReducer = combineReducers({
+  movies: moviesSlice.reducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    movies: moviesSlice.reducer,
-  },
+  reducer: rootReducer,
   devTools: true,
 });
 
@@ -92,4 +94,4 @@ export const {
 
 export type AppDispatch = typeof store.dispatch;
 
-export type RootState = ReturnType<typeof moviesSlice.reducer>;
+export type RootState = ReturnType<typeof rootReducer>;

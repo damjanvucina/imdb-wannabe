@@ -1,4 +1,4 @@
-export * from './HomeScreen';
+export * from '../../home/fragments/HomeScreen';
 export * from './DetailsScreen';
 export * from './MovieDetailsOverview';
 export * from './CategoriesPreview';

@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
 import {DATE_FORMAT, Movie} from '../const';
-import {colors} from '../theme';
+import {colors} from '../../../core/theme';
 import {getYearFromDate, minutesToTimeLabel} from '../services';
 import {
   fetchMovieCreditsThunk,

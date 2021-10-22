@@ -3,7 +3,7 @@ import {TextInput} from 'react-native';
 import {useDispatch} from 'react-redux';
 import styled from 'styled-components/native';
 import {Search} from '../assets';
-import {colors} from '../theme';
+import {colors} from '../../../core/theme';
 import {fetchMoviesThunk, fetchMovieGenresThunk} from '../redux';
 
 export const SearchBar: FC = memo(() => {

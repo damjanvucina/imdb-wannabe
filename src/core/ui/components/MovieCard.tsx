@@ -3,10 +3,16 @@ import {Image, TouchableOpacity, ViewStyle} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
-import {FavoriteIcon} from '../../favorites/components';
-import {getMoviePosterUri} from '../services';
-import {NavigationScreenNames, NavigationStackIdContext} from '../const';
-import {getMovieByIdSelector, isMovieFavoriteSelector} from '../redux';
+import {FavoriteIcon} from '../../../features/favorites/components';
+import {getMoviePosterUri} from '../../../features/home/services';
+import {
+  NavigationScreenNames,
+  NavigationStackIdContext,
+} from '../../../features/home/const';
+import {
+  getMovieByIdSelector,
+  isMovieFavoriteSelector,
+} from '../../../features/home/redux';
 
 type Props = {
   movieId: number;

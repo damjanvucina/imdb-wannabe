@@ -14,7 +14,7 @@ import {
   movieRuntimeMinutesSelector,
   toggleIsMovieFavorite,
 } from '../redux';
-import {FavoriteIcon} from '../components';
+import {FavoriteIcon} from '../../favorites/components';
 
 type Props = {
   movie: Movie;

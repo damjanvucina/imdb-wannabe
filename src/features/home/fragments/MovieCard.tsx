@@ -3,7 +3,7 @@ import {Image, TouchableOpacity, ViewStyle} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
-import {FavoriteIcon} from '../components';
+import {FavoriteIcon} from '../../favorites/components';
 import {getMoviePosterUri} from '../services';
 import {NavigationScreenNames, NavigationStackIdContext} from '../const';
 import {getMovieByIdSelector, isMovieFavoriteSelector} from '../redux';

@@ -2,9 +2,9 @@ import React, {useEffect, memo, FC} from 'react';
 import {TextInput} from 'react-native';
 import {useDispatch} from 'react-redux';
 import styled from 'styled-components/native';
-import {Search} from '../../home/assets';
+import {Search} from '../../movies/assets';
 import {colors} from '../../../core/theme';
-import {fetchMoviesThunk, fetchMovieGenresThunk} from '../../home/redux';
+import {fetchMoviesThunk, fetchMovieGenresThunk} from '../../movies/redux';
 
 export const SearchBar: FC = memo(() => {
   const dispatch = useDispatch();

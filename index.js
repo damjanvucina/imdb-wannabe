@@ -1,14 +1,14 @@
 import {Navigation} from 'react-native-navigation';
-import {HomeScreen, DetailsScreen} from './src/features/home/fragments';
+import {HomeScreen, DetailsScreen} from './src/features/movies/fragments';
 import {FavoritesScreen} from './src/features/favorites/fragments';
-import {Header} from './src/features/home/components';
-import {NavigationScreenNames} from './src/features/home/const';
+import {Header} from './src/features/movies/components';
+import {NavigationScreenNames} from './src/features/movies/const';
 import {
   HomeTabActive,
   HomeTabInactive,
   FavoritesTabInactive,
   FavoritesTabActive,
-} from './src/features/home/assets';
+} from './src/features/movies/assets';
 import {colors} from './src/core/theme';
 
 Navigation.registerComponent(

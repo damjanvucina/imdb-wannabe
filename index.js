@@ -9,7 +9,7 @@ import {
   HomeTabInactive,
   FavoritesTabInactive,
   FavoritesTabActive,
-} from './src/features/movies/assets';
+} from './src/core/ui/assets';
 import {colors} from './src/core/theme';
 
 Navigation.registerComponent(

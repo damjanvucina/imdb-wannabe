@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {View} from 'react-native';
-import {NotFavorite, Favorite} from '../../movies/assets';
+import {NotFavorite, Favorite} from '../../../core/ui/assets';
 import {colors} from '../../../core/theme';
 
 type Props = {

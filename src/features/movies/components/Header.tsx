@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 import {View} from 'react-native';
-import {Logo} from '../assets/images';
+import {Logo} from '../../../core/ui/assets/images';
 
 export const Header: NavigationFunctionComponent = React.memo(() => {
   return (

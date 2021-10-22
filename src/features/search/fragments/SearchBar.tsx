@@ -2,7 +2,7 @@ import React, {useEffect, memo, FC} from 'react';
 import {TextInput} from 'react-native';
 import {useDispatch} from 'react-redux';
 import styled from 'styled-components/native';
-import {Search} from '../../movies/assets';
+import {Search} from '../../../core/ui/assets';
 import {colors} from '../../../core/theme';
 import {fetchMoviesThunk, fetchMovieGenresThunk} from '../../movies/redux';
 

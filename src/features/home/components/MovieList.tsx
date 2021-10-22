@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {FlatList, View, StyleSheet, ViewStyle} from 'react-native';
 import {Title} from '../../../core/theme';
-import {MovieCard} from '../../../core/ui/components/MovieCard';
+import {MovieCard} from '../fragments/MovieCard';
 
 type Props = {
   title: string;

@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {MovieList} from '../components';
+import {MovieList} from '../../movies/components';
 import {
   popularMoviesIdsSelector,
   topRatedMoviesIdsSelector,
   upcomingMoviesIdsSelector,
-} from '../redux';
+} from '../../movies/redux';
 
 export const CategoriesPreview: React.FC = React.memo(() => {
   const popularMoviesIds = useSelector(popularMoviesIdsSelector);

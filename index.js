@@ -1,5 +1,6 @@
 import {Navigation} from 'react-native-navigation';
-import {HomeScreen, DetailsScreen, FavoritesScreen} from './src/features/home/fragments';
+import {HomeScreen, DetailsScreen} from './src/features/home/fragments';
+import {FavoritesScreen} from './src/features/favorites/fragments';
 import {Header} from './src/features/home/components';
 import {NavigationScreenNames} from './src/features/home/const';
 import {

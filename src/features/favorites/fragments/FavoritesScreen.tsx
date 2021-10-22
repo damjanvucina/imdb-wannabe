@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScreenWrapper} from './ScreenWrapper';
-import {FavoriteCategoryPreview} from './FavoriteCategoryPreview';
+import {ScreenWrapper} from '../../home/fragments/ScreenWrapper';
+import {FavoriteCategoryPreview} from '../../home/fragments/FavoriteCategoryPreview';
 
 import {NavigationFunctionComponent} from 'react-native-navigation';
 

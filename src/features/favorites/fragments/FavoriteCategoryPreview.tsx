@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {StyleSheet} from 'react-native';
-import {favoriteMoviesIdsSelector} from '../redux';
-import {MovieList} from '../components/MovieList';
+import {favoriteMoviesIdsSelector} from '../../home/redux';
+import {MovieList} from '../../home/components/MovieList';
 
 export const FavoriteCategoryPreview: React.FC = React.memo(() => {
   const favoriteMoviesIds = useSelector(favoriteMoviesIdsSelector);
